@@ -16,6 +16,8 @@ public class App {
 
         MyApplication app = injector.getInstance(MyApplication.class);
 
+        injector.getAllBindings();
+
         app.sendMsg("Hello world", "supengfei007@gmail.com");
     }
 }

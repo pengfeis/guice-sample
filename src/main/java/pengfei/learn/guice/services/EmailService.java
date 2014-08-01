@@ -5,7 +5,6 @@ import javax.inject.Singleton;
 /**
  * Created by pengfei on 2014/7/31.
  */
-@Singleton
 public class EmailService implements MsgService {
     @Override
     public boolean sendMsg(String msg, String recipient) {
