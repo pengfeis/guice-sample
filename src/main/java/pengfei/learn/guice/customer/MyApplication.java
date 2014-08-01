@@ -1,6 +1,7 @@
 package pengfei.learn.guice.customer;
 
 import com.google.inject.Inject;
+import pengfei.learn.guice.injector.Weibo;
 import pengfei.learn.guice.services.MsgService;
 
 /**
@@ -11,7 +12,7 @@ public class MyApplication {
     private MsgService service;
 
     @Inject
-    public void setService(MsgService service) {
+    public void setService(@Weibo MsgService service) {
         this.service = service;
     }
 
