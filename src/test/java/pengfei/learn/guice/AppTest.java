@@ -2,21 +2,25 @@ package pengfei.learn.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import org.junit.Test;
 import pengfei.learn.guice.customer.MyApplication;
 import pengfei.learn.guice.injector.MyInjector;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Unit test for simple Test.
  */
 public class AppTest {
-    public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
-        Injector injector = Guice.createInjector(new MyInjector());
 
+    @Test
+    public void testSendMsg() {
+        System.out.println("Hello World!");
+
+        Injector injector = Guice.createInjector(new MyInjector());
         MyApplication app = injector.getInstance(MyApplication.class);
 
-        injector.getAllBindings();
-
         app.sendMsg("Hello world", "supengfei007@gmail.com");
+        assertNotNull("There some instance can not be NULL", injector.getAllBindings());
     }
 }
