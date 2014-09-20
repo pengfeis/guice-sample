@@ -38,4 +38,6 @@ Icon
 
 # The build out files
 /target
+
+#IDE generated files
 .idea/
