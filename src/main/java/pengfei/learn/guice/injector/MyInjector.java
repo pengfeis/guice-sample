@@ -1,6 +1,7 @@
 package pengfei.learn.guice.injector;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import pengfei.learn.guice.services.EmailService;
 import pengfei.learn.guice.services.MsgService;
 import pengfei.learn.guice.services.WeiboService;
@@ -14,5 +15,10 @@ public class MyInjector extends AbstractModule {
     protected void configure() {
         bind(MsgService.class).annotatedWith(Weibo.class).to(WeiboService.class);
         bind(MsgService.class).to(WeiboService.class);
+    }
+
+    @Provides
+    public EmailService getEmailService() {
+        return new EmailService();
     }
 }
