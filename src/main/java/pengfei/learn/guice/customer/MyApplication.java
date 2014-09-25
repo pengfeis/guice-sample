@@ -9,12 +9,8 @@ import pengfei.learn.guice.services.MsgService;
  */
 public class MyApplication {
 
-    private MsgService service;
-
     @Inject
-    public void setService(@Weibo MsgService service) {
-        this.service = service;
-    }
+    private MsgService service;
 
     public boolean sendMsg(String msg, String recipient) {
         return this.service.sendMsg(msg, recipient);

@@ -13,8 +13,8 @@ public class MyInjector extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(MsgService.class).annotatedWith(Weibo.class).to(WeiboService.class);
-        bind(MsgService.class).to(WeiboService.class);
+//        bind(MsgService.class).annotatedWith(Weibo.class).to(WeiboService.class);
+//        bind(MsgService.class).to(WeiboService.class);
     }
 
     @Provides
