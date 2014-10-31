@@ -15,8 +15,6 @@ public class AppTest {
 
     @Test
     public void testSendMsg() {
-        System.out.println("Hello World!");
-
         Injector injector = Guice.createInjector(new MyInjector());
         MyApplication app = injector.getInstance(MyApplication.class);
 

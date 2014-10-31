@@ -1,6 +1,9 @@
 package pengfei.learn.guava.collectionpractice;
 
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by pengfei on 2014/9/25.
@@ -10,6 +13,13 @@ public class App {
         ImmutableSet<Color> colors = ImmutableSet.<Color>builder().add(new Color()).build();
         ImmutableSet<String> ch = ImmutableSet.of("a", "b", "c", "b");
         System.out.println(ch + colors.toString());
+
+        Map<String, Map<Long, List<String>>> map = Maps.newHashMap();
+        Map<String, Map<Long, List<String>>> map2 = Maps.newHashMap();
+        Lists.newLinkedList();
+        Sets.newHashSet();
+        ImmutableList<String> list = ImmutableList.of("b", "a");
+        System.out.println(list);
     }
 
 
