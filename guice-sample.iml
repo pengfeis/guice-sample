@@ -21,6 +21,7 @@
         <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="org.hibernate.tutorial.jpa" value="85117f06-89bb-49a6-b05b-719ac1c77710" />
+          <factory-entry name="pengfei.learn.hibernate.domain" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resouces/META-INF/persistence.xml" />
       </configuration>
