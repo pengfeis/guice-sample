@@ -2,12 +2,10 @@ package pengfei.learn.guava.collectionpractice;
 
 import com.google.common.collect.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by pengfei on 2014/9/25.
- */
 public class App {
     public static void main(String[] args) {
         ImmutableSet<Color> colors = ImmutableSet.<Color>builder().add(new Color()).build();
@@ -20,6 +18,7 @@ public class App {
         Sets.newHashSet();
         ImmutableList<String> list = ImmutableList.of("b", "a");
         System.out.println(list);
+
     }
 
 
