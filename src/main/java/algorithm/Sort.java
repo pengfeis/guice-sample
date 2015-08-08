@@ -1,12 +1,9 @@
-package algorithm.sort;
+package algorithm;
 
 import java.util.Arrays;
 
-/**
- * Created by pengfei on 2015/8/5.
- */
-public class sort {
-    public static Integer[] sort(Integer[] temp) {
+public class Sort {
+    public static Integer[] bubleSort(Integer[] temp) {
         boolean isOrdered = true;
         while (isOrdered) {
             isOrdered = false;
@@ -26,9 +23,25 @@ public class sort {
         return temp;
     }
 
+
+    public static Integer[] quickSort(Integer[] sorting) {
+        int low = 0; int high = sorting.length-1;
+        int pivot = sorting[low];
+        while(low < high) {
+            while (sorting[low] <= pivot && low < high) {
+                ++low;
+            }
+        }
+
+
+        return null;
+    }
+
+
+
     public static void main(String[] args) {
-        Integer sorting[] = {11, 8, 2, 5, 3, 6, 9, 7, 4};
-        sort(sorting);
-        System.out.println(Arrays.toString(sorting));
+        String var = "hello";
+        System.out.println(var+", world" == "hello, world");
+
     }
 }
