@@ -79,9 +79,6 @@ public class AppTest {
         tx.begin();
         entityManager.persist(rxUserEntity);
         tx.commit();
-
-        ConcurrentHashMap<String, String> map = new ConcurrentHashMap();
-        map = null;
     }
 
     @Before
@@ -94,4 +91,5 @@ public class AppTest {
             factory.close();
         }
     }
+
 }
