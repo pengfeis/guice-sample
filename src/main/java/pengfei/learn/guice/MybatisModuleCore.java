@@ -8,7 +8,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
-import pengfei.learn.mybatis.RxUserMapper;
+import pengfei.learn.mybatis.mapper.RxUserMapper;
 
 import java.util.Properties;
 

@@ -159,7 +159,7 @@ public class RxUserEntity {
 
     @Override
     public String toString() {
-        return this.getMobileNumber() + "@" + this.getGender();
+        return this.getMobileNumber() + "@" + this.getNickName() + "_" + this.getGender();
     }
 
 

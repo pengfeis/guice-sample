@@ -1,4 +1,4 @@
-package pengfei.learn.mybatis;
+package pengfei.learn.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
