@@ -24,15 +24,4 @@ public interface RxUserMapper {
             @Result(column = "is_admin", property = "isAdmin")
     })
     Collection<RxUserEntity> selectAll();
-
-//    id	int(11)	NO	PRI		auto_increment
-//    password	varchar(128)	NO
-//    last_login	datetime	NO
-//    nick_name	varchar(40)	YES
-//    mobile_number	varchar(20)	NO	UNI
-//    register_dt	datetime	NO
-//    date_of_birth	datetime	NO
-//    update_dt	datetime	NO
-//    is_admin	tinyint(1)	NO
-//    gender	varchar(1)	NO
 }
