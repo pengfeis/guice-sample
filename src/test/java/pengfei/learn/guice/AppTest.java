@@ -25,12 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Unit test for simple Test.
- */
 public class AppTest {
-
-    private EntityManagerFactory factory = null;
 
     @Test
     public void testSendMsg() {
@@ -39,57 +34,6 @@ public class AppTest {
 
         app.sendMsg("Hello world", "supengfei007@gmail.com");
         assertNotNull("There some instance can not be NULL", injector.getAllBindings());
-    }
-
-    @Test
-    public void testJpaHibernate() {
-        EntityManager entityManager = factory.createEntityManager();
-//        List<Customer> resultList = entityManager.createQuery("from Customer", Customer.class).getResultList();
-//        List<RxUserEntity> rxUsers = entityManager.createQuery("from RxUserEntity", RxUserEntity.class).getResultList();
-//        for (Customer cust : resultList) {
-//            System.out.println(cust.toString());
-//        }
-//
-//        for (RxUserEntity user : rxUsers) {
-//            System.out.println(user.toString());
-//        }
-//        Customer customer = entityManager.find(Customer.class, 1L);
-//        RxUserEntity user = entityManager.find(RxUserEntity.class, "1000000000085");
-//        System.out.println(customer.getCustomerName());
-//        System.out.println(user.toString());
-
-        RxUserEntity rxUserEntity = new RxUserEntity();
-        rxUserEntity.setGender('F');
-        rxUserEntity.setMobileNumber("15601658286");
-        rxUserEntity.setNickName("Gf");
-        rxUserEntity.setPassword("789632145");
-        rxUserEntity.setDateOfBirth(Timestamp.valueOf("2015-05-27 12:25:23.001"));
-        rxUserEntity.setRegisterDt(new Timestamp(System.currentTimeMillis()));
-        rxUserEntity.setLastLogin(new Timestamp(System.currentTimeMillis()));
-        rxUserEntity.setUpdateDt(new Timestamp(System.currentTimeMillis()));
-
-        UserAlbumEntity userAlbumEntity = new UserAlbumEntity();
-        userAlbumEntity.setTitle("selfie");
-        userAlbumEntity.setAlbumType("Normal");
-        userAlbumEntity.setImage("N/A");
-        rxUserEntity.setUserAlbumEntities(Lists.newArrayList(userAlbumEntity));
-
-
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        entityManager.persist(rxUserEntity);
-        tx.commit();
-    }
-
-    @Before
-    public void before() {
-        factory = Persistence.createEntityManagerFactory("pengfei.learn.hibernate.domain");
-    }
-    @After
-    public void after() {
-        if (null != factory) {
-            factory.close();
-        }
     }
 
 }

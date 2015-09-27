@@ -20,7 +20,7 @@ public class RxUserEntity {
     private char gender;
     private List<UserAlbumEntity> userAlbumEntities = Lists.newArrayList();
 
-    @OneToMany(targetEntity = UserAlbumEntity.class, cascade = {CascadeType.ALL},  fetch=FetchType.EAGER, mappedBy = "rxUserEntity")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},  fetch=FetchType.LAZY, mappedBy = "rxUserEntity")
     public List<UserAlbumEntity> getUserAlbumEntities() {
         return userAlbumEntities;
     }
@@ -59,15 +59,11 @@ public class RxUserEntity {
         this.nickName = nickName;
     }
 
-
     @Id
     @Column(name = "mobile_number", nullable = false, insertable = true, updatable = true, length = 20)
     public String getMobileNumber() {
         return mobileNumber;
     }
-
-
-
 
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;

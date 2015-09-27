@@ -11,12 +11,10 @@ public class UserAlbumEntity {
     private String image;
     private String albumType;
     private Timestamp uploadDate;
-
-
     private RxUserEntity rxUserEntity;
 
-    @ManyToOne
-//    @JoinColumn(name = "user_name_id")
+    @ManyToOne(cascade = CascadeType.ALL, optional=false)
+    @JoinColumn(name = "rx_user_mobile_num")
     public RxUserEntity getRxUserEntity() {
         return rxUserEntity;
     }
@@ -95,16 +93,9 @@ public class UserAlbumEntity {
             return false;
         }
 
-        if (!((albumType != null) ? !albumType.equals(that.albumType) : (that.albumType != null))) {
-            if (!(uploadDate != null ? !uploadDate.equals(that.uploadDate) : that.uploadDate != null)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
+        if (!((albumType != null) ? !albumType.equals(that.albumType) : (that.albumType != null)) && !(uploadDate != null ? !uploadDate.equals(that.uploadDate) : that.uploadDate != null))
+            return true;
+        else return false;
 
     }
 
