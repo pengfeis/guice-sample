@@ -1,8 +1,8 @@
 package pengfei.learn.hibernate.domain;
 
-import com.google.common.collect.Lists;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,8 +59,9 @@ public class RxUserEntityTest {
         rxUserEntity.getUserAlbumEntities().add(userAlbumEntity);
 
         EntityTransaction tx = entityManager.getTransaction();
+        Session session = entityManager.unwrap(Session.class);
         tx.begin();
-        entityManager.persist(rxUserEntity);
+        session.save(rxUserEntity);
         tx.commit();
     }
 

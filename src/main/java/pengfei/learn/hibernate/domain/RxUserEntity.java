@@ -9,6 +9,8 @@ import java.util.List;
 @Entity
 @Table(name = "rx_user", schema = "", catalog = "dev")
 public class RxUserEntity {
+
+    private Long id;
     private String password;
     private Timestamp lastLogin;
     private String nickName;
@@ -19,6 +21,18 @@ public class RxUserEntity {
     private byte isAdmin;
     private char gender;
     private List<UserAlbumEntity> userAlbumEntities = Lists.newArrayList();
+
+    @Id
+    @TableGenerator(name = "rxIdGenerator", table = "ID_TABLE_GEN", pkColumnName = "ID_NAME", valueColumnName = "ID_NAME", pkColumnValue = "RX_PK", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.TABLE, generator="rxIdGenerator")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},  fetch=FetchType.LAZY, mappedBy = "rxUserEntity")
     public List<UserAlbumEntity> getUserAlbumEntities() {

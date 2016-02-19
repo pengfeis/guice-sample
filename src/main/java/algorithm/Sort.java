@@ -40,8 +40,28 @@ public class Sort {
 
 
     public static void main(String[] args) {
-        String var = "hello";
-        System.out.println(var+", world" == "hello, world");
+        String var = "aquickbrownfoxjumpoverthelazydog";
+        lackStatistics(var.toCharArray());
+    }
+
+    public static void lackStatistics(char[] someChar) {
+
+        // 97 = a
+
+        int[] ints = new int[26];
+        for (int i = 0; i < someChar.length; i++) {
+            ints[someChar[i] - 97 ]++;
+        }
+
+        for (int j = 0; j < ints.length; j ++) {
+            if (ints[j] == 0) {
+                System.out.println(((char)(j + 97) + " <---------Not "));
+            } else {
+                System.out.println((char)(j + 97) + " Exits " + ints[j]);
+            }
+        }
+
 
     }
+
 }
