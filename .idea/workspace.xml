@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7ab0b69-ebb6-4be6-9836-8eef867bdf2d" name="Default" comment="Hibernate relationship research">
+    <list default="true" id="a7ab0b69-ebb6-4be6-9836-8eef867bdf2d" name="Default" comment="">
       <change type="DELETED" beforePath="E:\Dev\GitHubProject\guice-sample\.idea\workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\Dev\GitHubProject\guice-sample\guice-sample.iml" afterPath="" />
     </list>
     <ignored path="guice-sample.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -916,7 +915,7 @@
       <workItem from="1453729635498" duration="937000" />
       <workItem from="1455715681918" duration="2453000" />
       <workItem from="1455724788363" duration="269000" />
-      <workItem from="1455891009031" duration="569000" />
+      <workItem from="1455891009031" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="Runnable mybatis-guice test case">
       <created>1443022846389</created>
@@ -954,11 +953,17 @@
       <option name="project" value="LOCAL" />
       <updated>1455891488028</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="remove non source code files">
+      <created>1455891599893</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1455891599893</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72708000" />
+    <option name="totallyTimeSpent" value="72792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1014" extended-state="6" />
@@ -1012,7 +1017,8 @@
     <MESSAGE value="Remove comment" />
     <MESSAGE value="correct resources folder" />
     <MESSAGE value="Hibernate relationship research" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hibernate relationship research" />
+    <MESSAGE value="remove non source code files" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove non source code files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
