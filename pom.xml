@@ -5,7 +5,10 @@
     <groupId>pengfei.learn.guice</groupId>
     <artifactId>guice-sample</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <modules>
+        <module>learn-lucene</module>
+    </modules>
+    <packaging>pom</packaging>
     <name>guice-sample</name>
 
     <properties>
