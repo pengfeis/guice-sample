@@ -11,8 +11,6 @@ import org.apache.lucene.store.FSDirectory;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import java.io.File;
-
 public class HelloLucene {
 
     public void createIndex() throws IOException {

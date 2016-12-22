@@ -1,8 +1,11 @@
 package pengfei.learn.guava.collectionpractice;
 
-import com.google.common.collect.*;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
