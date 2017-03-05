@@ -37,7 +37,8 @@ Icon
 .Trashes
 
 # The build out files
-/target
+target/*
+target/
 
 #IDE generated files
 /.idea

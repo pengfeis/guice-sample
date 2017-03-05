@@ -1,30 +1,44 @@
 package pengfei.learn.guava.collectionpractice;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
-import java.util.List;
-import java.util.Map;
-
 public class App {
     public static void main(String[] args) {
-        ImmutableSet<Color> colors = ImmutableSet.<Color>builder().add(new Color()).build();
-        ImmutableSet<String> ch = ImmutableSet.of("a", "b", "c", "b");
-        System.out.println(ch + colors.toString());
-
-        Map<String, Map<Long, List<String>>> map = Maps.newHashMap();
-        Map<String, Map<Long, List<String>>> map2 = Maps.newHashMap();
-        Lists.newLinkedList();
-        Sets.newHashSet();
-        ImmutableList<String> list = ImmutableList.of("b", "a");
-        System.out.println(list);
 
     }
 
+    public int[] twoSum(int[] nums, int target) {
+        int[] a = null;
+        for (int i=0; i<nums.length; i++) {
+            for(int j=1; j<nums.length; j++) {
+                if ((target - nums[i]) == nums[j]) {
+                    return new int[]{i, j};
+                }
+            }
+        }
 
+        return a;
+    }
+
+    public static void changeStr(Person person) {
+//        person.setName("b");
+        person = new Person("b");
+    }
+
+}
+
+class Person {
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
 }
 
 class Color {
