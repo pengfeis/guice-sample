@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import pengfei.learn.mybatis.mapper.RxUserMapper;
 import pengfei.learn.mybatis.module.MySqlMyBatisModule;
@@ -17,6 +18,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 
+@Ignore
 public class RxUserEntityTest {
 
     private EntityManagerFactory factory = null;
