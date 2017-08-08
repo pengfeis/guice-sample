@@ -85,19 +85,20 @@ public class ConditionSample {
         final int i = 1;
         final ConditionSample cs = new ConditionSample();
         new Thread(() -> {
-            while (true) {
+            for (;;) {
+                cs.put(i + 1);
+            }
+
+        }).start();
+
+        new Thread(() -> {
+            for (;;) {
                 cs.put(i + 1);
             }
         }).start();
 
         new Thread(() -> {
-            while (true) {
-                cs.put(i + 1);
-            }
-        }).start();
-
-        new Thread(() -> {
-            while (true) {
+            for (;;) {
                 System.out.println(cs.take());
             }
         }).start();
