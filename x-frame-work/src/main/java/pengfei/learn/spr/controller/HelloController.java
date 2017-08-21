@@ -1,12 +1,15 @@
 package pengfei.learn.spr.controller;
 
 import com.google.common.base.Stopwatch;
+import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,6 +20,8 @@ public class HelloController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private AtomicInteger atomicNumber = new AtomicInteger(0);
+
+    private volatile int count = 0;
 
 
     @RequestMapping(value = "/first")
@@ -44,13 +49,22 @@ public class HelloController {
 
         }
 
+
         Stopwatch stopWatch = Stopwatch.createStarted();
-        executorService.awaitTermination(10l, TimeUnit.SECONDS);
+        executorService.shutdownNow();
 
         stopWatch.stop();
         logger.info("after shutting down " + stopWatch.elapsed(TimeUnit.SECONDS));
 
         model.addAttribute("message", "Hello Spring MVC Framework!" + atomicNumber.get() + "spend time " + stopWatch.elapsed(TimeUnit.SECONDS));
         return "hello";
+    }
+
+    @RequestMapping(value = "/second")
+    public @ResponseBody
+    String printCurrentCount(Integer currentVal, HttpServletRequest request) {
+//        logger.info("Current int is " + count++);
+//        logger.info("Current atomic is ");
+        return ImmutableMap.of("int", count++, "atomicInt", atomicNumber.incrementAndGet()).toString();
     }
 }
