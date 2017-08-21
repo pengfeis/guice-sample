@@ -2,6 +2,13 @@ package pengfei.learn.guava.collectionpractice;
 
 public class App {
     public static void main(String[] args) {
+        int i = 128;
+
+        System.out.println(i >>> 4);
+
+        System.out.println(-1 << 29 | 0);
+
+
 
     }
 
