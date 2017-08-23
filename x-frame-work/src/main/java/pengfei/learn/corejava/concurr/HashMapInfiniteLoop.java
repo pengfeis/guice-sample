@@ -1,59 +1,46 @@
 package pengfei.learn.corejava.concurr;
 
 import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class HashMapInfiniteLoop extends Thread{
+public class HashMapInfiniteLoop {
 
-    private HashMap<Integer, Integer> hashMap = new HashMap<>(2, 0.75f);
+    public static final ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 10, 10l, TimeUnit.SECONDS,
+            new ArrayBlockingQueue<Runnable>(10), new ThreadFactory() {
+        private AtomicInteger threadPre = new AtomicInteger(0);
 
-    private static AtomicInteger at = new AtomicInteger();
+        String poolName = "ONLY-FOR-TEST-PURPOSE";
 
-    @Override
-    public void run() {
-        while (at.get() < 100000) {
-            hashMap.put(at.get(), at.get());
-            at.incrementAndGet();
+        @Override
+        public Thread newThread(Runnable r) {
+            return new Thread(r, poolName + threadPre.incrementAndGet());
         }
-    }
+    }, new ThreadPoolExecutor.AbortPolicy());
+
 
     public static void main(String[] args) throws InterruptedException {
-        HashMapInfiniteLoop t1 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t2 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t3 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t4 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t5 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t6 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t7 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t8 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t9 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t10 = new HashMapInfiniteLoop();
-        HashMapInfiniteLoop t11= new HashMapInfiniteLoop();
 
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
-        t5.start();
-        t6.start();
-        t7.start();
-        t8.start();
-        t9.start();
-        t10.start();
-        t11.start();
-
-        System.out.println("all-start");
-        t1.join();
-        t2.join();
-        t3.join();
-        t4.join();
-        t5.join();
-        t6.join();
-        t7.join();
-        t8.join();
-        t9.join();
-        t10.join();
-        t11.join();
+        final HashMap<String, String> map = new HashMap<String, String>(2);
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 10000; i++) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            map.put(UUID.randomUUID().toString(), "");
+                        }
+                    }, "ftf" + i).start();
+                }
+            }
+        }, "ftf");
+        t.start();
+        t.join();
 
     }
 }
