@@ -1,11 +1,13 @@
 package pengfei.learn.spr.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -66,5 +68,11 @@ public class HelloController {
 //        logger.info("Current int is " + count++);
 //        logger.info("Current atomic is ");
         return ImmutableMap.of("int", count++, "atomicInt", atomicNumber.incrementAndGet()).toString();
+    }
+
+
+    @RequestMapping(value = "/third/{orderCode}")
+    public String getSomeJsonData(@PathVariable String orderCode) {
+        return JSONObject.toJSONString(ImmutableMap.of("code", "200", "msg", "你好", "data", orderCode));
     }
 }
