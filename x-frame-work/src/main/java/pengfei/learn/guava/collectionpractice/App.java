@@ -8,6 +8,9 @@ public class App {
 
         System.out.println(-1 << 29 | 0);
 
+        System.out.println(null == null);
+        System.out.println(null != null);
+
 
 
     }

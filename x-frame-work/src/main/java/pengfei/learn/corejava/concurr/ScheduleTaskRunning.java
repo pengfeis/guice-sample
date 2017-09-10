@@ -21,7 +21,7 @@ public class ScheduleTaskRunning {
     }
 
 
-    public static ScheduleTaskRunning getInstace() {
+    public static ScheduleTaskRunning getInstance() {
         return RunnerHolder.INSTANCE;
     }
 
@@ -32,6 +32,6 @@ public class ScheduleTaskRunning {
 
 
     public static void main(String[] args) {
-        getInstace();
+        getInstance();
     }
 }
