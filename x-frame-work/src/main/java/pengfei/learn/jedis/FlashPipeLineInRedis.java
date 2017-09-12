@@ -24,7 +24,7 @@ public class FlashPipeLineInRedis {
     }
 
     public static void main(String[] args) {
-        Jedis jedis = new Jedis("localhost", 16449);
+        Jedis jedis = new Jedis("localhost", 6379);
         Stopwatch sw = Stopwatch.createStarted();
         for (int j = 0; j < 100; j++) {
             long randomInt = new Random().nextInt(1000);
