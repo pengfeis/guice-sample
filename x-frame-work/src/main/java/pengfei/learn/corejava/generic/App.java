@@ -14,6 +14,8 @@ public class App<T extends List<String>> {
         map.put("age", "22");
         System.out.println(map.get("name"));
         System.out.println(map.get("age"));
+
+        System.out.println(2<<14 -1);
     }
 
 
