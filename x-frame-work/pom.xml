@@ -26,6 +26,7 @@
         <springframework.version>4.3.7.RELEASE</springframework.version>
         <httpclient.version>4.5.3</httpclient.version>
         <fastjson.version>1.2.8</fastjson.version>
+        <org.apache.tomcat.version>7.0.77</org.apache.tomcat.version>
     </properties>
 
     <artifactId>x-frame-work</artifactId>
@@ -71,6 +72,20 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${org.apache.tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-coyote</artifactId>
+            <version>${org.apache.tomcat.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
