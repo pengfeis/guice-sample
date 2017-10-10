@@ -10,12 +10,12 @@ import java.util.Properties;
 public class KafkaSample {
     public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.26.130:9092");
+        props.put("bootstrap.servers", "127.0.0.1:9092");
         props.put("client.id", "DemoProducer");
-        props.put("key.serializer", "org.apache.kafka.common.serialization.IntegerSerializer");
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-        KafkaProducer<Integer, String> producer = new KafkaProducer<>(props);
+        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
         int msgNo = 1;
 
@@ -27,10 +27,10 @@ public class KafkaSample {
             long startTime = System.currentTimeMillis();
 
             if (!isSync) {
-                producer.send(new ProducerRecord<>("test_pengfeis", msgNo, msgStr),
+                producer.send(new ProducerRecord<>("test_pengfeis", String.valueOf(msgNo), msgStr),
                         new DemoCallback(startTime, msgNo, msgStr));
             } else {
-                producer.send(new ProducerRecord<>("test_pengfeis", msgNo, msgStr));
+                producer.send(new ProducerRecord<>("test_pengfeis", String.valueOf(msgNo), msgStr));
             }
             ++msgNo;
         }
