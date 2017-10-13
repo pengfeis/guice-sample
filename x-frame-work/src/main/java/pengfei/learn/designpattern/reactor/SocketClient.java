@@ -5,46 +5,40 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.Random;
 
 public class SocketClient {
-    public static void main(String[] args) {
-        try {
-            Socket socket = new Socket("127.0.0.1", 2345);
-            socket.setSoTimeout(2000);
+    public static void main(String[] args) throws InterruptedException {
+        while (!Thread.currentThread().isInterrupted()) {
+            Thread.sleep(2000l);
+            new Thread(new ClientTask()).start();
+        }
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Thread.currentThread().join();
 
+    }
 
-            // socket output steam for send data to server
-            PrintStream out = new PrintStream(socket.getOutputStream());
+    static class ClientTask implements Runnable{
 
+        @Override
+        public void run() {
+            try {
+                Socket socket = new Socket("127.0.0.1", 2345);
+                socket.setSoTimeout(100);
 
-            // socket input stream for recieve data from server
-            BufferedReader buf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-            boolean f = true;
-            while (f) {
-                System.out.println("input: ");
-                String str = br.readLine();
-
+                // socket output steam for send data to server
+                PrintStream out = new PrintStream(socket.getOutputStream());
                 // sent to server
-                out.println(str);
-                if ("bye".equals(str)) {
-                    f = false;
-                } else {
-                    String echo = buf.readLine();
-                    System.out.println(echo);
-                }
+                out.println(Thread.currentThread().getName() + " " + System.currentTimeMillis());
+
+                // socket input stream for recieve data from server
+                BufferedReader buf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+                System.out.println(buf.readLine());
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-            br.close();
-
-            if (socket != null) {
-                socket.close();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
