@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class SocketClient {
     public static void main(String[] args) throws InterruptedException {
-        while (!Thread.currentThread().isInterrupted()) {
+        while (!Thread.interrupted()) {
             new Thread(new ClientTask()).start();
         }
 
@@ -19,6 +19,7 @@ public class SocketClient {
 
     static class ClientTask implements Runnable{
 
+        // TODO where is connect
         @Override
         public void run() {
             try {

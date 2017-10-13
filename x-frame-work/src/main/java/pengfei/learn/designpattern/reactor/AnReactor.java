@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * copy doug lea
+ * copy doug lea's idea
  */
 public class AnReactor implements Runnable {
     private Selector selector;
@@ -18,13 +18,26 @@ public class AnReactor implements Runnable {
 
 
     AnReactor(int port) throws IOException {
-        selector = Selector.open();
-        serverSocketChannel = ServerSocketChannel.open();
+        selector = Selector.open(); // create selector, its depends os.
+        serverSocketChannel = ServerSocketChannel.open();   // create Server-Socket Channel, thread-safe
         serverSocketChannel.socket().bind(new InetSocketAddress(port));
         serverSocketChannel.configureBlocking(false);
         SelectionKey sk = serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         sk.attach(new Acceptor());
     }
+
+
+    public static void main(String[] args) {
+        try {
+            new Thread(new AnReactor(2345)).start();
+
+            Thread.currentThread().join();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void run() {
@@ -41,14 +54,14 @@ public class AnReactor implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-
         }
     }
 
-    void dispatch(SelectionKey k) {
+    private void dispatch(SelectionKey k) {
         Runnable r = (Runnable) (k.attachment());
-        if (r != null)
+        if (r != null) {
             r.run();
+        }
     }
 
 
