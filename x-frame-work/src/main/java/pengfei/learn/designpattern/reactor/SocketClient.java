@@ -10,7 +10,6 @@ import java.util.Random;
 public class SocketClient {
     public static void main(String[] args) throws InterruptedException {
         while (!Thread.currentThread().isInterrupted()) {
-            Thread.sleep(2000l);
             new Thread(new ClientTask()).start();
         }
 
@@ -23,13 +22,15 @@ public class SocketClient {
         @Override
         public void run() {
             try {
+                long l = System.currentTimeMillis();
                 Socket socket = new Socket("127.0.0.1", 2345);
-                socket.setSoTimeout(100);
+//                socket.setSoTimeout(100);
 
                 // socket output steam for send data to server
                 PrintStream out = new PrintStream(socket.getOutputStream());
                 // sent to server
-                out.println(Thread.currentThread().getName() + " " + System.currentTimeMillis());
+
+                out.println(Thread.currentThread().getName() + "-" + l);
 
                 // socket input stream for recieve data from server
                 BufferedReader buf = new BufferedReader(new InputStreamReader(socket.getInputStream()));

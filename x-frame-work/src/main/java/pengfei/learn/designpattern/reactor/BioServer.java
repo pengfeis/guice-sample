@@ -32,7 +32,7 @@ public class BioServer implements Runnable {
 
             while (!Thread.interrupted()) {
                 Socket socket = serverSocket.accept();
-                this.executor.execute(new Handler(socket));
+                this.executor.execute(new Handler(socket, System.currentTimeMillis()));
             }
 
         } catch (Exception e) {
@@ -45,9 +45,11 @@ public class BioServer implements Runnable {
     static class Handler implements Runnable {
 
         final Socket socket;
+        final long acceptTime;
 
-        public Handler(Socket socket) {
+        public Handler(Socket socket, long acceptTime) {
             this.socket = socket;
+            this.acceptTime = acceptTime;
         }
 
         @Override
@@ -61,9 +63,20 @@ public class BioServer implements Runnable {
 
                 String line = buf.readLine();
                 System.out.println("rec: " + line);
-                writer.println(line);
-                writer.flush();
 
+                String[] lineArray = line.split("-");
+                if (lineArray.length > 2) {
+                    String sentTime = lineArray[2];
+
+                    Long sent = Long.valueOf(sentTime);
+                    long flyTime = this.acceptTime - sent;
+
+                    long allTime = System.currentTimeMillis() - sent;
+
+                    writer.println(allTime + "-" + flyTime);
+                }
+                writer.println("\n");
+                writer.flush();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
