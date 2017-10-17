@@ -10,6 +10,7 @@ import java.util.Random;
 public class SocketClient {
     public static void main(String[] args) throws InterruptedException {
         while (!Thread.interrupted()) {
+            Thread.sleep(1000l);
             new Thread(new ClientTask()).start();
         }
 
