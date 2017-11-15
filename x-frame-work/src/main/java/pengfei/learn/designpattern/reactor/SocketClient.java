@@ -31,7 +31,6 @@ public class SocketClient {
                 // socket output steam for send data to server
                 PrintStream out = new PrintStream(socket.getOutputStream());
                 // sent to server
-
                 out.println(Thread.currentThread().getName() + "-" + l);
 
                 // socket input stream for recieve data from server

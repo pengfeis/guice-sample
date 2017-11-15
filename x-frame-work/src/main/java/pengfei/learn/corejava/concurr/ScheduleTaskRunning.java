@@ -11,9 +11,8 @@ public class ScheduleTaskRunning {
             System.out.println("now: " + Instant.now().toString());
 
             try {
-                Thread.sleep(7000);
                 System.out.println(Thread.currentThread().getName() + " after sleep");
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
