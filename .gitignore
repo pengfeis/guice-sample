@@ -14,3 +14,5 @@ bin/
 *.iml
 .#*
 .svn
+*.ipr
+*.iws
