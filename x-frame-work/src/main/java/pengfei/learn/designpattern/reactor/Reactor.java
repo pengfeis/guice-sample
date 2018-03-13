@@ -169,7 +169,7 @@ public class Reactor implements Runnable {
     // main of Reactor
     public static void main(String[] args) {
         try {
-            new Thread(new Reactor(2345)).start();
+            new Thread(new Reactor(2345), "Reactor-Thread-001").start();
 
             Thread.currentThread().join();
 

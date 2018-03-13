@@ -11,19 +11,36 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.ImmediateEventExecutor;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChatServer {
+
     private final ChannelGroup channelGroup = new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
 
-    private final EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+    private final EventLoopGroup bossGroup = new NioEventLoopGroup(3, new ThreadFactory() {
+        private AtomicInteger idx = new AtomicInteger(0);
 
+        @Override
+        public Thread newThread(Runnable r) {
+            return new Thread(r, "CHAT_BOSS_THREAD_" + idx.getAndIncrement());
+        }
+    });
+    private final EventLoopGroup workerGroup = new NioEventLoopGroup(2, new ThreadFactory() {
+        private AtomicInteger idx = new AtomicInteger(0);
+
+        @Override
+        public Thread newThread(Runnable r) {
+            return new Thread(r, "CHAT_CHILD_THREAD_" + idx.getAndIncrement());
+        }
+    });
 
     private Channel channel;
 
 
     public ChannelFuture start(InetSocketAddress address) {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(eventLoopGroup)
+        serverBootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChatServerInitializer(channelGroup));
 
@@ -41,7 +58,8 @@ public class ChatServer {
         }
 
         channelGroup.close();
-        eventLoopGroup.shutdownGracefully();
+        workerGroup.shutdownGracefully();
+        bossGroup.shutdownGracefully();
     }
 
     public static void main(String[] args) {
