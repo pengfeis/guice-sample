@@ -22,11 +22,11 @@ public class HashMapInfiniteLoop {
         }
     }, new ThreadPoolExecutor.AbortPolicy());
 
+    private static final HashMap<String, String> map = new HashMap<String, String>(2);
 
     public static void main(String[] args) throws InterruptedException {
 
-        final HashMap<String, String> map = new HashMap<String, String>(2);
-        Thread t = new Thread(new Runnable() {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 10000; i++) {
@@ -38,9 +38,9 @@ public class HashMapInfiniteLoop {
                     }, "ftf" + i).start();
                 }
             }
-        }, "ftf");
-        t.start();
-        t.join();
+        });
 
+
+        Thread.currentThread().join();
     }
 }

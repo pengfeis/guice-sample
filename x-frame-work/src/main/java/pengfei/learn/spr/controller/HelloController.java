@@ -10,7 +10,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pengfei.learn.spr.service.SaySomethingService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,6 +26,14 @@ public class HelloController {
     private AtomicInteger atomicNumber = new AtomicInteger(0);
 
     private volatile int count = 0;
+
+
+    @Resource
+    private SaySomethingService saySomethingService;
+
+    public HelloController() {
+        System.out.println("---------controller--------");
+    }
 
 
     @RequestMapping(value = "/first")
