@@ -28,6 +28,7 @@
         <fastjson.version>1.2.8</fastjson.version>
         <kafka-cli.version>0.11.0.1</kafka-cli.version>
         <org.apache.tomcat.version>7.0.77</org.apache.tomcat.version>
+        <hystrix-core.version>1.5.12</hystrix-core.version>
     </properties>
 
     <artifactId>x-frame-work</artifactId>
@@ -97,7 +98,22 @@
             <version>${kafka-cli.version}</version>
         </dependency>
 
-    </dependencies>
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+            <version>${hystrix-core.version}</version>
+        </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+    </dependencies>
 
 </project>

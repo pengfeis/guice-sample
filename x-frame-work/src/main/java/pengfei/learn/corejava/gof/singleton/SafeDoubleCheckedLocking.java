@@ -1,5 +1,8 @@
 package pengfei.learn.corejava.gof.singleton;
 
+/**
+ * @author pengfeisu
+ */
 public class SafeDoubleCheckedLocking {
 
     /**
@@ -10,8 +13,10 @@ public class SafeDoubleCheckedLocking {
     public static Instance getInstance() {
         if (instance == null) {
             synchronized (Instance.class) {
-                if (instance == null)
-                    instance = new Instance();//instance为volatile，现在没问题了
+                //instance为volatile，现在没问题了
+                if (instance == null) {
+                    instance = new Instance();
+                }
             }
         }
         return instance;
