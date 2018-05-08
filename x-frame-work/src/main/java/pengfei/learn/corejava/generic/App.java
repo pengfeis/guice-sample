@@ -17,6 +17,7 @@ public class App<T extends List<String>> {
 
     public static void main(String[] args) throws IOException {
         InputStream is = Files.asByteSource(new File("/Users/pengfeisu/IdeaProjects/guice-sample/x-frame-work/src/proto/person.proto")).openStream();
+        // generateProtobufDefinedForField
         ProtobufIDLProxy.generateSource(is, new File("."));
     }
 
