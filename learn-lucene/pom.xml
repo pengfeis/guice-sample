@@ -29,52 +29,7 @@
             <artifactId>lucene-queryparser</artifactId>
             <version>5.5.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>1.9.3</version>
-        </dependency>
-
     </dependencies>
-
-
-    <build>
-        <finalName>${artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jettyVersion}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>run-benchmarks</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <classpathScope>test</classpathScope>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>org.openjdk.jmh.Main</argument>
-                                <argument>.*</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-        </plugins>
-    </build>
 
 
 </project>
