@@ -9,5 +9,5 @@ public interface IdGenerator {
      *
      * @return
      */
-    String next();
+    long next();
 }
