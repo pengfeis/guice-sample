@@ -29,6 +29,7 @@
         <kafka-cli.version>0.11.0.1</kafka-cli.version>
         <org.apache.tomcat.version>7.0.77</org.apache.tomcat.version>
         <hystrix-core.version>1.5.12</hystrix-core.version>
+        <open-feign>10.0.1</open-feign>
     </properties>
 
     <artifactId>x-frame-work</artifactId>
@@ -124,6 +125,46 @@
             <artifactId>jprotobuf</artifactId>
             <version>2.1.8</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>${open-feign}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>${open-feign}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
+            <version>${open-feign}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-hystrix</artifactId>
+            <version>${open-feign}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-slf4j</artifactId>
+            <version>${open-feign}</version>
+        </dependency>
+
+
 
 
     </dependencies>
