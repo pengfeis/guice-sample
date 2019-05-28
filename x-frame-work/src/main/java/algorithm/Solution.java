@@ -15,7 +15,7 @@ import java.util.List;
  * TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+public class Solution {
 
     List<Integer> ret = new ArrayList<>();
 
