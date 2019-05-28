@@ -19,12 +19,12 @@ public class Solution {
 
     List<Integer> ret = new ArrayList<>();
 
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> inorderTraversal(TreeNode root) {
 
         if (root != null) {
+            inorderTraversal(root.left);
             ret.add(root.val);
-            preorderTraversal(root.left);
-            preorderTraversal(root.right);
+            inorderTraversal(root.right);
         }
         return ret;
     }
@@ -37,7 +37,7 @@ public class Solution {
         TreeNode two = new TreeNode(2, three, null);
         TreeNode root = new TreeNode(1, null, two);
 
-        List<Integer> items = solution.preorderTraversal(root);
+        List<Integer> items = solution.inorderTraversal(root);
 
         System.out.println(items);
     }
