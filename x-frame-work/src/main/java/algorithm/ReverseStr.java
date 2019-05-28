@@ -45,8 +45,9 @@ public class ReverseStr {
 
         char[] input = {'a', 'b', 'c', 'd', 'e', 'f'};
         reverseStr.leftRotateString(input, 6, 4);
-        System.out.printf(input.toString());
-
+        for (char c : input) {
+            System.out.println(c);
+        }
 
     }
 }
