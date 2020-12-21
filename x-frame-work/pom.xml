@@ -24,7 +24,7 @@
 
     <properties>
         <springframework.version>4.3.7.RELEASE</springframework.version>
-        <httpclient.version>4.5.3</httpclient.version>
+        <httpclient.version>4.5.2</httpclient.version>
         <fastjson.version>1.2.8</fastjson.version>
         <kafka-cli.version>0.11.0.1</kafka-cli.version>
         <org.apache.tomcat.version>7.0.77</org.apache.tomcat.version>
@@ -40,10 +40,7 @@
             <artifactId>spring-context</artifactId>
             <version>${springframework.version}</version>
             <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
+
             </exclusions>
         </dependency>
 
@@ -180,6 +177,12 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-httpclient</artifactId>
             <version>${open-feign}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>httpclient</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>

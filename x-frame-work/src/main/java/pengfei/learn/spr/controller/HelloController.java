@@ -14,9 +14,16 @@ import pengfei.learn.spr.service.SaySomethingService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @author supengfei
+ */
 @Controller
 @RequestMapping("/hello")
 public class HelloController {
@@ -41,22 +48,16 @@ public class HelloController {
 
 
         ExecutorService executorService = Executors.newFixedThreadPool(10, new ThreadFactory() {
+            @Override
             public Thread newThread(Runnable r) {
                 return new Thread(r, "test-pool-" + atomicNumber.getAndAdd(1));
             }
         });
 
         for (int i = 0; i < 100; i++) {
-            Future<?> future = executorService.submit(new Runnable() {
-                public void run() {
-                    try {
-                        Thread.sleep(100);
-                        atomicNumber.getAndAdd(1);
-                    } catch (InterruptedException e) {
-                    }
-
-                    logger.info("Current int is " + atomicNumber.get());
-                }
+            Future<?> future = executorService.submit(() -> {
+                atomicNumber.getAndAdd(1);
+                logger.info("Current int is " + atomicNumber.get());
             });
 
         }
@@ -75,8 +76,6 @@ public class HelloController {
     @RequestMapping(value = "/second")
     public @ResponseBody
     String printCurrentCount(Integer currentVal, HttpServletRequest request) {
-//        logger.info("Current int is " + count++);
-//        logger.info("Current atomic is ");
         return ImmutableMap.of("int", count++, "atomicInt", atomicNumber.incrementAndGet()).toString();
     }
 
