@@ -23,7 +23,7 @@
     </build>
 
     <properties>
-        <springframework.version>4.3.7.RELEASE</springframework.version>
+        <springframework.version>5.3.18</springframework.version>
         <httpclient.version>4.5.2</httpclient.version>
         <fastjson.version>1.2.8</fastjson.version>
         <kafka-cli.version>0.11.0.1</kafka-cli.version>
